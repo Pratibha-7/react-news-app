@@ -17,9 +17,6 @@ export default class App extends React.Component {
     return <>
     <NavBar />
     <News/>
-    <News/>
-    <News/>
-    <News/>
-    </>
+        </>
   }
 }

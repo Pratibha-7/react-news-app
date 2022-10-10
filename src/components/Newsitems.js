@@ -3,17 +3,24 @@ import React, { Component } from 'react'
 
 export default class Newsitems extends Component {
   render() {
-  let  {title,description}=this.props;
+  let  {title,description,imageUrl,newsUrl}=this.props;
     return (
         <>
+        <div className="container my-3" >
        <div className="card" style={{width: '18rem'}}>
-        <img src="https://images.moneycontrol.com/static-mcnews/2022/09/Kotak-770x433.png" className="card-img-top" alt="..." />
+        <img src={imageUrl} className="card-img-top" alt="..." />
         <div className="card-body">
-          <h5 className="card-title">{title}</h5>
+                 <h5 className="card-title">{title}</h5>
           <p className="card-text">{description}</p>
-          <a href="/" className="btn btn-primary">Go somewhere</a>
+
+          
+          <a href={newsUrl} target="_blank"  rel="noreferrer" className="btn btn-outline-info btn-sm">Read More</a>
+        </div>
+                   
+
         </div>
       </div>
+      
 
       </>
     )

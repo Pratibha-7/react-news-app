@@ -6,6 +6,7 @@ import News from "./components/News";
 import React, { Component } from "react";
 
 export default class App extends React.Component {
+ 
   constructor() {
     super();
     console.log("This constructor function");
@@ -16,7 +17,7 @@ export default class App extends React.Component {
   render() {
     return <>
     <NavBar />
-    <News/>
+    <News pageSize={5} country="in" category="general"/>
         </>
   }
 }

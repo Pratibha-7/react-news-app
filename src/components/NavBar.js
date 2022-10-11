@@ -15,7 +15,33 @@ export default class NavBar extends React.Component {
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/">About</a>
-              </li></ul>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/general">General</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/business">Business</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/entertainment">Entertainment</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/health">Health</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/science">Science</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/sports">Sports</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/technology">Technology</a>
+              </li>      
+              
+              
+              
+              
+              </ul>
                         </div>
         </div>
       </nav>
@@ -29,3 +55,6 @@ export default class NavBar extends React.Component {
     </>
   }
 }
+//
+
+

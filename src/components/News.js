@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Newsitems from "./Newsitems.js";
-
+import PropTypes from 'prop-types'
 export default class News extends Component {
   /*articles =  [
     {
@@ -264,7 +264,20 @@ export default class News extends Component {
         "content": "Match AnalysisAt 18 years, she is already just the fifth Indian woman to 1000 T20I runs, and the youngest to do so in all of women's cricket"
     }
 ]*/
-  constructor() {
+   static   propTypes={
+       country:PropTypes.string,
+       pageSize:PropTypes.number,
+       category:PropTypes.string
+
+   }
+   static defaultProps={
+     country:'in',
+     pageSize:9,
+     category:'general'
+
+
+   }
+constructor() {
     console.log("constructor");
     super();
     this.state = { 
@@ -276,7 +289,7 @@ export default class News extends Component {
   prevClick=async()=>
   {
     console.log("previous");
-    let url=`https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=2b058c7de11845f2a8c9ba319cbbcd95&page=${this.state.page-1}&pageSize=10`;
+    let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=2b058c7de11845f2a8c9ba319cbbcd95&page=${this.state.page-1}&pageSize=${this.props.pageSize}`;
     let data= await fetch(url);
     let parseData= await data.json();
 
@@ -290,13 +303,13 @@ export default class News extends Component {
   nextClick=async()=>
   {
     console.log("next");
-    if(this.state.page > Math.ceil(this.state.totalsResults/10))
+    if(this.state.page > Math.ceil(this.state.totalsResults/this.props.pageSize))
     {
 
     }
     else
     {
-        let url=`https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=2b058c7de11845f2a8c9ba319cbbcd95&page=${this.state.page+1}&pageSize=10`;
+        let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=2b058c7de11845f2a8c9ba319cbbcd95&page=${this.state.page+1}&pageSize=${this.props.pageSize}`;
         let data= await fetch(url);
         let parseData= await data.json();
     
@@ -311,7 +324,7 @@ export default class News extends Component {
   async componentDidMount()
   {
     console.log("componentDidMount Function")
-    let url="https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=2b058c7de11845f2a8c9ba319cbbcd95&page=1&pageSize=10";
+    let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=2b058c7de11845f2a8c9ba319cbbcd95&page=1&pageSize=${this.props.pageSize}`;
     let data= await fetch(url);
     let parseData= await data.json();
 
@@ -344,7 +357,7 @@ export default class News extends Component {
             <button disabled={this.state.page<=1} type="button" className="btn btn-info " onClick={this.prevClick}>
               Previous
             </button>
-            <button disabled={this.state.page > Math.ceil(this.state.totalsResults/10)}type="button" className="btn btn-info" onClick={this.nextClick}>
+            <button disabled={this.state.page > Math.ceil(this.state.totalsResults/this.props.pageSize)}type="button" className="btn btn-info" onClick={this.nextClick}>
               Next
             </button>
           </div>
